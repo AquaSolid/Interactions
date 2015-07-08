@@ -11,7 +11,7 @@ import java.util.Random;
  *
  * @author filip
  */
-public class Human {
+public class Human extends System {
     
     String Sex;
     String Name;
@@ -23,12 +23,14 @@ public class Human {
     boolean Ambition;
     int Will;
     
+    @Override
     public void Norm ( boolean Conformism, int Homeostasis ) {
         if (Conformism == false){
             //Activate Homeostasis Method
         }
     }
     
+    @Override
     public void Regression (int Homeostasis, int Power) {
         //Increase Homeostasis's number, lower Power's, do within a cycle 
         // You will need to add some kind of trial number
