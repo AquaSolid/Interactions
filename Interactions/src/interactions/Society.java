@@ -19,9 +19,6 @@ public class Society extends Organization {
     
     boolean HumanCooperation;
     
-    
-    
-    
     @Override
     void Norm(boolean Conformism, int Homeostasis) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.

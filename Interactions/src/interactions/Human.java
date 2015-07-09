@@ -18,7 +18,7 @@ public class Human extends Organization {
     String Surname;
     int Age;
     int IDnumber;
-    double Money;
+    double Wealth;
 
     boolean Ambition;
     int Will;
@@ -40,13 +40,13 @@ public class Human extends Organization {
     //       Homeostasis++;
     //    }
     }
-    public void Job (String Name, String Surname, double Money, boolean Ambition, int Will, double Salary){
+    public void Job (String Name, String Surname, double Wealth, boolean Ambition, int Will, double Salary){
         if(Ambition == true && Will<=5 && Will>=0){
             Will++;
         }else{
             Will--;
         }
-        Money = Money + Salary;
+        Wealth = Wealth + Salary;
     }
     
     public void Riot (int Age, int IDnumber){
