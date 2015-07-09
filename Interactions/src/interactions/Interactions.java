@@ -17,8 +17,6 @@ public class Interactions {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        System.out.println("Welcome to Interactions");
-        
+        java.lang.System.out.println("Welcome to Interactions.");
     }
-    
 }

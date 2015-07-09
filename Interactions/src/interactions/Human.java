@@ -11,7 +11,7 @@ import java.util.Random;
  *
  * @author filip
  */
-public class Human extends System {
+public class Human extends Organization {
     
     String Sex;
     String Name;

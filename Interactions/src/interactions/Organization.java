@@ -9,7 +9,7 @@ package interactions;
  *
  * @author filip
  */
-public abstract class System {
+public abstract class Organization {
     boolean Conformism;
     int Power;
     int Homeostasis;
