@@ -13,7 +13,7 @@ import java.util.Random;
  */
 public class Human extends Organization {
     
-    String Sex;
+    String Gender;
     String Name;
     String Surname;
     int Age;
@@ -22,6 +22,8 @@ public class Human extends Organization {
 
     boolean Ambition;
     int Will;
+    
+    
     
     @Override
     public void Norm ( boolean Conformism, int Homeostasis ) {
