@@ -23,6 +23,4 @@ public class Occupation{
         System.out.println(Name + Surname + "has earned " + Salary);
     }
      
-     
-     
 }
