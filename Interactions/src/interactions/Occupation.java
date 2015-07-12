@@ -9,7 +9,7 @@ package interactions;
  *
  * @author filip
  */
-public class Occupation{
+public class Occupation extends Human{
     String Position;
     double Salary;
     boolean Melancholy;
@@ -24,13 +24,36 @@ public class Occupation{
         this.Enjoyment = Enjoyment;
     }
     
+    public void ListJobs (){
+        System.out.print("1. Teacher\n2. Artist\n3. Programmer\n4. Bussinessman\n5. Other\n");
+    }
     
+    public int PickJob(){
+        int s = 0;
+        boolean T = true;
+        while (T == true){
+            if(s > 5 && s < 1){
+                System.out.println("Error, try again");
+            }else{
+                T = false;
+            }
+        }
+        switch(s){
+            case 1: System.out.print("You chose " + s + "Teacher"); break;
+            case 2: System.out.print("You chose " + s + "Artist"); break;
+            case 3: System.out.print("You chose " + s + "Programmer"); break;
+            case 4: System.out.print("You chose " + s + "Bussinessman"); break;
+            case 5: System.out.print("You chose " + s + "Other"); break;
+                    
+        }
+        return s;
+    }
     
     public void gotoWork(String Name, String Surname){
         System.out.println(Name + Surname + "is going to work");
     }
     
-     public void backfromWork(String Name, String Surname){
+    public void backfromWork(String Name, String Surname){
         System.out.println(Name + Surname + "is going home");
         System.out.println(Name + Surname + "has earned " + Salary);
     }
