@@ -60,6 +60,97 @@ public class Human extends Organization {
             //Suffer Punishment
         }
     }
+    public static void checkGender(int sN) throws WrongEntryException{
+        if(sN > 3 || sN < 1){
+            throw new WrongEntryException(sN);
+        }
+    }
+    public static void checkNegativeAge(int A) throws NegativeAgeNumberExcetion{
+        if(A < 1){
+            throw new NegativeAgeNumberExcetion(A);
+        }
+    }
+    public static void checkStringForDigits(String wordD) throws DigitsInNameException{
+        int digit = 0;
+        for(int i = 0; i<wordD.length(); i++){
+            if(Character.isDigit(wordD.charAt(i))){
+                digit++;
+            }
+        }
+        if(digit == 0){
+            throw new DigitsInNameException(wordD);
+        }
+    }
+    public static void checkStringForSigns(String wordS) throws SignsInNameException{
+        boolean NotALetter = false;
+        for(int i = 0; i<wordS.length(); i++){
+            if(Character.isLetter(wordS.charAt(i))){
+                NotALetter = true;
+            }else{
+                NotALetter = false;
+            }
+        }
+        if(NotALetter = false){
+            throw new SignsInNameException(wordS);
+        }
+    }
+    public void gatherGender(){
+        Scanner input = new Scanner (System.in);
+        
+        int s = 0;
+        boolean T = true;
+        do{     
+        System.out.println("Gender: ");
+        System.out.println("1. Male  2. Female  3. Other ");
+        s = input.nextInt();
+        try{
+            checkGender(s);
+            switch (s){
+                case 1:  Gender = "Male"; break;
+                case 2:  Gender = "Female"; break;
+                case 3:  Gender = "Other"; break;
+            }
+            
+            T = false;
+        } catch(WrongEntryException e){
+            System.out.println(e + "\n");
+        }
+        }while (T == true);
+    }
+    public void gatherAge (){
+        Scanner input = new Scanner (System.in);
+        
+        boolean T = false;
+        do{
+        System.out.println("Age: ");
+        Age = input.nextInt();
+            try{
+            checkNegativeAge(Age);
+            T = true;
+            }catch (NegativeAgeNumberExcetion e){
+                System.out.println(e + "\n");
+            }
+        
+        }while(T == false);
+    }
+    public void gatherName(){
+        Scanner input = new Scanner (System.in);
+        String Name;
+        boolean T = true;
+        do{
+            System.out.println("Name: ");
+            Name = input.next();
+                try{
+                    checkStringForDigits(Name);
+                    checkStringForSigns(Name);
+                    T = false;
+                } catch(DigitsInNameException e){
+                    System.out.println(e + "\n");
+                } catch(SignsInNameException e){
+                    System.out.println(e + "\n");
+                }    
+        }while (T == true);
+    }
     
     public void gatherInfo(){
         
@@ -67,39 +158,25 @@ public class Human extends Organization {
         Random RanGen = new Random();
         
         System.out.println("Please complete the requirements.");
-        int s = 0;
-        boolean T = true;
-        while (T == true){        
-        System.out.println("Gender: ");
-        System.out.println("1. Male  2. Female  3. Other ");
-        s = input.nextInt();
-            if(s > 3 || s < 1){
-                System.out.println("Error, try again");
-                break;
-            }else{
-                T = false;
-            } 
-            switch (s){
-                case 1:  Gender = "Male"; break;
-                case 2:  Gender = "Female"; break;
-                case 3:  Gender = "Other"; break;
-            }
-        }
-        System.out.println("Age: ");
-        Age = input.nextInt();
-        System.out.println("Name: ");
-        Name = input.next();
-        System.out.println("Surname: ");
-        Surname = input.next();
-        T=true;
-        int Randy = 0;
-        while(T==true){ 
-            Randy = RanGen.nextInt(999999); 
-            if(Randy>100000){
-                    T=false;
-                }
-        }
-        IDnumber = Randy;
+        
+        // Gender Entry with Exceptions
+        gatherGender();
+        // Age Entry with Exceptions
+        gatherAge();
+        // Name Entry with Exceptions ERROR ><><><><><><><><><><
+        gatherName();
+//        
+//        System.out.println("Surname: ");
+//        Surname = input.next();
+//        T = true;
+//        int Randy = 0;
+//        while(T == true){ 
+//            Randy = RanGen.nextInt(999999); 
+//            if(Randy>100000){
+//                    T = false;
+//                }
+//        }
+//        IDnumber = Randy;
     }
     
     public void HumanInfo (){
