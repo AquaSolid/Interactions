@@ -12,11 +12,11 @@ package interactions;
 public abstract class Organization {
     boolean Conformism;
     int Power;
-    int Homeostasis;
+    int Standard;
+    int Satisfaction;
     
-    abstract void Norm ( boolean Conformism, int Homeostasis );
-    
-    abstract void Regression (int Homeostasis, int Power);
+    abstract void Norm ( boolean Conformism, int Standard, int Satisfaction);
+    abstract void Regression (int Power);
     
 }
 

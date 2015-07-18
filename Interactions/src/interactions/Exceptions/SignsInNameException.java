@@ -3,33 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package interactions;
+package interactions.Exceptions;
 
 /**
  *
  * @author filip
  */
-public class NegativeAgeNumberExcetion extends Exception {
+public class SignsInNameException extends Exception {
 
-    private int entry;
-    public NegativeAgeNumberExcetion(int entry) {
+    private String entry;
+    public SignsInNameException(String entry) {
         this.entry = entry;        
     }
 
     @Override
     public String toString() {
-        return "Please enter correctly";
+        return "Please enter correctly. Do NOT put signs into your name.";
     }
-    
-    
 
     /**
-     * Constructs an instance of <code>NegativeAgeNumberExcetion</code> with the
+     * Constructs an instance of <code>DigitsInNameException</code> with the
      * specified detail message.
      *
      * @param msg the detail message.
      */
-    public NegativeAgeNumberExcetion(String msg) {
-        super(msg);
-    }
 }

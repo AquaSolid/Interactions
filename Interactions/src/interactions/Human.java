@@ -5,6 +5,10 @@
  */
 package interactions;
 
+import interactions.Exceptions.DigitsInNameException;
+import interactions.Exceptions.NegativeAgeNumberExcetion;
+import interactions.Exceptions.SignsInNameException;
+import interactions.Exceptions.WrongEntryException;
 import java.util.Random;
 import java.util.Scanner;
 
@@ -23,17 +27,76 @@ public class Human extends Organization {
     int Job;
 
     boolean Ambition;
+    boolean Conscious;
     int Will;
     
+    
     @Override
-    public void Norm ( boolean Conformism, int Homeostasis ) {
-        if (Conformism == false){
-            //Activate Homeostasis Method
+    void Norm(boolean Conformism, int Standard, int Satisfaction) {
+        // Norm activates Regression, then Regression activates Homeostasis,
+        // if it works Norm is saved, if it doesn't, then it adapts.
+        if(Conformism != true){
+            if(Satisfaction > Standard){
+//             Homeostasis(int Will, int Power);
+            }
+        }
+    }
+    
+    public void WillAugmentation (){
+        if( Ambition == true){
+            Will++;
+        }
+        if (Satisfaction < 2){
+            Will++;
+        }
+    }
+    
+    public void AmbitionUnleash(){
+        if(Satisfaction > 2){
+            Ambition = true;
+        }
+    }
+    
+    public void Satisfaction (){
+        if(Wealth > 75000){
+            Satisfaction++;
+        }
+        if(Ambition = true){
+            Satisfaction++;
+        }
+    }
+
+    public static boolean getRandomBoolean() {
+       return Math.random() < 0.5;
+       //I tried another approaches here, still the same result
+   }
+    
+    public void Meditate(){
+        Random randomGenerator = new Random();
+        int randomInt = randomGenerator.nextInt(10);
+        Conscious = getRandomBoolean();
+        if (Conscious == true){
+            Will++;
+        }
+        if (randomInt == 1){
+            Ambition = true;
+            System.out.println("You have found your ambition! ");
+        }
+    }
+    
+    public void Homeostasis(int Salary){
+        if (Will > Power){
+            Regression(Power);
+        }
+        if(Ambition == true){
+            Will++;
+            Satisfaction++;
+            Salary++;
         }
     }
     
     @Override
-    public void Regression (int Homeostasis, int Power) {
+    public void Regression (int Power) {
         //Increase Homeostasis's number, lower Power's, do within a cycle 
         // You will need to add some kind of trial number
         // Every time someone
@@ -77,7 +140,7 @@ public class Human extends Organization {
                 digit++;
             }
         }
-        if(digit == 0){
+        if(digit != 0){
             throw new DigitsInNameException(wordD);
         }
     }
@@ -90,7 +153,7 @@ public class Human extends Organization {
                 NotALetter = false;
             }
         }
-        if(NotALetter = false){
+        if(NotALetter == false){
             throw new SignsInNameException(wordS);
         }
     }
@@ -100,8 +163,8 @@ public class Human extends Organization {
         int s = 0;
         boolean T = true;
         do{     
-        System.out.println("Gender: ");
-        System.out.println("1. Male  2. Female  3. Other ");
+        System.out.println("Choose your gender: 1. Male  2. Female  3. Other ");
+        System.out.print("Gender: ");
         s = input.nextInt();
         try{
             checkGender(s);
@@ -122,7 +185,7 @@ public class Human extends Organization {
         
         boolean T = false;
         do{
-        System.out.println("Age: ");
+        System.out.print("Age: ");
         Age = input.nextInt();
             try{
             checkNegativeAge(Age);
@@ -135,52 +198,66 @@ public class Human extends Organization {
     }
     public void gatherName(){
         Scanner input = new Scanner (System.in);
-        String Name;
-        boolean T = true;
+        boolean T = false;
         do{
-            System.out.println("Name: ");
+            System.out.print("Name: ");
             Name = input.next();
                 try{
                     checkStringForDigits(Name);
                     checkStringForSigns(Name);
-                    T = false;
+                    T = true;
                 } catch(DigitsInNameException e){
                     System.out.println(e + "\n");
                 } catch(SignsInNameException e){
                     System.out.println(e + "\n");
                 }    
-        }while (T == true);
+        }while (T == false);
     }
+    public void gatherSurname(){
+        Scanner input = new Scanner (System.in);
+        boolean T = false;
+        do{
+            System.out.print("Surname: ");
+            Surname = input.next();
+                try{
+                    checkStringForDigits(Surname);
+                    checkStringForSigns(Surname);
+                    T = true;
+                } catch(DigitsInNameException e){
+                    System.out.println(e + "\n");
+                } catch(SignsInNameException e){
+                    System.out.println(e + "\n");
+                }    
+        }while (T == false);
     
+    }
     public void gatherInfo(){
         
         Scanner input = new Scanner (System.in);
         Random RanGen = new Random();
         
-        System.out.println("Please complete the requirements.");
+        System.out.println("Please complete the following requirements.");
         
         // Gender Entry with Exceptions
         gatherGender();
         // Age Entry with Exceptions
         gatherAge();
-        // Name Entry with Exceptions ERROR ><><><><><><><><><><
+        // Name Entry with Exceptions
         gatherName();
-//        
-//        System.out.println("Surname: ");
-//        Surname = input.next();
-//        T = true;
-//        int Randy = 0;
-//        while(T == true){ 
-//            Randy = RanGen.nextInt(999999); 
-//            if(Randy>100000){
-//                    T = false;
-//                }
-//        }
-//        IDnumber = Randy;
+        // Surname Entry with Exceptions
+        gatherSurname();
+        
+        boolean T = true;
+        int Randy = 0;
+        while(T == true){ 
+            Randy = RanGen.nextInt(999999); 
+            if(Randy>100000){
+                    T = false;
+                }
+        }
+        IDnumber = Randy;
     }
-    
     public void HumanInfo (){
         System.out.print(Gender + " " + Age + " " + Name + " " + Surname + " " + IDnumber + "\n");
-    }
-    
+    }    
 }

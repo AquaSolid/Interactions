@@ -20,13 +20,30 @@ public class Society extends Organization {
     boolean HumanCooperation;
     
     @Override
-    void Norm(boolean Conformism, int Homeostasis) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    void Norm(boolean Conformism, int Standard, int Satisfaction) {
+        // Norm activates Regression, then Regression activates Homeostasis,
+        // if it works Norm is saved, if it doesn't, then it adapts.
+        if(Conformism != true){
+            if(Satisfaction > Standard){
+                Homeostasis(int Will, int Power);
+            }
+        }
     }
 
     @Override
-    void Regression(int Homeostasis, int Power) {
+    void Regression(int Power) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    public void Homeostasis(int Will){
+        if (Will > Power){
+            Regression();
+        }
+        if(Ambition == true){
+            Will++;
+            Satisfaction++;
+            Salary++;
+        }
     }
     
 }
