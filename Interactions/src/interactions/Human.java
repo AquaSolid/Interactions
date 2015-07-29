@@ -24,7 +24,17 @@ public class Human extends Organization {
     int Age;
     int IDnumber;
     double Wealth;
-    int Job;
+    int Job = 0;
+    boolean TaxPay = false;
+    
+    public void Month (){
+        TaxPay = false;
+        // needs a time system.
+    }
+    
+    public void PayTax(){
+        TaxPay = true;
+    }
 
     boolean Ambition;
     boolean Conscious;
@@ -95,6 +105,18 @@ public class Human extends Organization {
         }
     }
     
+    public void Learn(){
+        Random randomGenerator = new Random();
+        int randomInt = randomGenerator.nextInt(20);
+        Conscious = getRandomBoolean();
+        if (Conscious == true){
+            Will++;
+        }
+        if (randomInt == 1){
+            Ambition = true;
+            System.out.println("You have found your ambition! ");
+        }
+    }
     @Override
     public void Regression (int Power) {
         //Increase Homeostasis's number, lower Power's, do within a cycle 
@@ -206,9 +228,7 @@ public class Human extends Organization {
                     checkStringForDigits(Name);
                     checkStringForSigns(Name);
                     T = true;
-                } catch(DigitsInNameException e){
-                    System.out.println(e + "\n");
-                } catch(SignsInNameException e){
+                } catch(DigitsInNameException | SignsInNameException e){
                     System.out.println(e + "\n");
                 }    
         }while (T == false);
@@ -257,7 +277,22 @@ public class Human extends Organization {
         }
         IDnumber = Randy;
     }
+    
+    public void Menu (){
+        System.out.print("1. Work\t2. Learn\t3. Meditate\t4. Register\n5. List Personal Information\t6. Riot");
+    }
+    
     public void HumanInfo (){
-        System.out.print(Gender + " " + Age + " " + Name + " " + Surname + " " + IDnumber + "\n");
+        String JobString = null;
+        switch (Job){
+            case 0: JobString = "Unemployed";
+            case 1: JobString = "Teacher";
+            case 2: JobString = "Artist";
+            case 3: JobString = "Programmer";
+            case 4: JobString = "Businessman";
+            case 5: JobString = "Other";
+        }
+        
+        System.out.print(Gender + " " + Age + " " + Name + " " + Surname + " " + IDnumber + "" + JobString +"\n");
     }    
 }

@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package interactions;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Scanner;
 import java.util.Random;
 /**
@@ -17,6 +19,15 @@ public class Interactions {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        System.out.println( sdf.format(cal.getTime()) );
+        
+        InteractionsUI gui = new InteractionsUI();
+        // Launch the UI..somehow. Figure it out.
+        gui.setVisible(true);
+        
         Scanner input = new Scanner (System.in);
         Random RanGen = new Random();
         Human h = new Human();

@@ -25,7 +25,7 @@ public class Society extends Organization {
         // if it works Norm is saved, if it doesn't, then it adapts.
         if(Conformism != true){
             if(Satisfaction > Standard){
-                Homeostasis(int Will, int Power);
+              //  Homeostasis(int Will, int Power);
             }
         }
     }
@@ -35,9 +35,9 @@ public class Society extends Organization {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public void Homeostasis(int Will){
+    public void Homeostasis(int Will, boolean Ambition, int Salary){
         if (Will > Power){
-            Regression();
+         //   Regression();
         }
         if(Ambition == true){
             Will++;

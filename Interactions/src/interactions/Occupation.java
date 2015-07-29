@@ -42,7 +42,7 @@ public class Occupation extends Human{
             case 1: System.out.print("You chose " + s + "Teacher"); break;
             case 2: System.out.print("You chose " + s + "Artist"); break;
             case 3: System.out.print("You chose " + s + "Programmer"); break;
-            case 4: System.out.print("You chose " + s + "Bussinessman"); break;
+            case 4: System.out.print("You chose " + s + "Businessman"); break;
             case 5: System.out.print("You chose " + s + "Other"); break;
                     
         }
